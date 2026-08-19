@@ -1,59 +1,38 @@
-# IvoPortfolio
+# Ivo Raimondi — Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.4.
+Ivo Raimondi's bilingual single-page software engineering portfolio, built with Angular 22 and SCSS. The site uses a hand-authored Fileteado Porteño visual system to present work in edge computing, distributed systems, IoT, and full-stack development.
 
-## Development server
-
-To start a local development server, run:
+## Local development
 
 ```bash
-ng serve
+npm install
+npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open `http://localhost:4200/`.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Quality checks
 
 ```bash
-ng generate component component-name
+npm run build
+npm test -- --watch=false
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+The production build prerenders the root route as static HTML for eventual GitHub Pages deployment. Publication is intentionally not configured in this repository yet.
 
-```bash
-ng generate --help
-```
+## Content still awaiting approval
 
-## Building
+The UI intentionally omits links or actions for information that has not been supplied or approved:
 
-To build the project run:
+- Public CV PDF
+- Contact email
 
-```bash
-ng build
-```
+The approved thesis PDF, thesis repository, project links, and LinkedIn profile are included. English and Spanish copy is kept together in the typed content data.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Portfolio content and public URLs live in `src/app/core/portfolio.data.ts` so approved details can be added without scattering them through templates.
 
-## Running unit tests
+## Approved visual and document assets
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- `public/images/oakestra-logo.png` is the official Oakestra mark served by `oakestra.io`.
+- `public/images/live-migration-thesis-cover.jpg` is rendered from the approved thesis PDF.
+- `public/documents/live-migration-thesis.pdf` is the approved public thesis by Ivo Raimondi.

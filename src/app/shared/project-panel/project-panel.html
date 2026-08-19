@@ -1,0 +1,25 @@
+<article class="project-card" [attr.data-theme]="project().theme">
+  <div class="project-card__topline">
+    <span class="project-card__number" aria-hidden="true">0{{ index() }}</span>
+    <p class="project-card__eyebrow">{{ project().eyebrow[language()] }}</p>
+  </div>
+  <h3>{{ project().title }}</h3>
+  <p class="project-card__description">{{ project().description[language()] }}</p>
+  <ul class="project-card__highlights" [attr.aria-label]="labels().highlights">
+    @for (highlight of project().highlights; track highlight.en) { <li>{{ highlight[language()] }}</li> }
+  </ul>
+  <div class="project-card__footer">
+    <ul class="tag-list" [attr.aria-label]="labels().technologies">
+      @for (technology of project().technologies; track technology) { <li>{{ technology }}</li> }
+    </ul>
+    <div class="project-card__links">
+      @for (link of project().links; track link.url) {
+        <a class="text-link" [href]="link.url" target="_blank" rel="noopener noreferrer">
+          {{ link.label[language()] }}
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 14 14 6M8 6h6v6" /></svg>
+          <span class="sr-only"> {{ labels().opensNewTab }}</span>
+        </a>
+      }
+    </div>
+  </div>
+</article>
