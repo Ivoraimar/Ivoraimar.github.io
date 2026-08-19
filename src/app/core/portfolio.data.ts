@@ -237,9 +237,9 @@ export const PORTFOLIO_COPY = {
     },
     contact: {
       eyebrow: 'Contacto',
-      title: '¿Tienes algo interesante entre manos?',
+      title: '¿Tenés algo interesante entre manos?',
       description:
-        'Si quieres hablar de oportunidades en ingeniería, proyectos open source o colaboraciones de investigación, escríbeme.',
+        'Si querés hablar de oportunidades en ingeniería, proyectos open source o colaboraciones de investigación, escribime.',
       githubAction: 'Ver mi GitHub',
       linkedinAction: 'Hablemos en LinkedIn',
     },
