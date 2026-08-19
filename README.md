@@ -18,7 +18,7 @@ npm run build
 npm test -- --watch=false
 ```
 
-The production build prerenders the root route as static HTML for eventual GitHub Pages deployment. Publication is intentionally not configured in this repository yet.
+The production build prerenders the root route as static HTML. Pushes to `main` deploy the contents of `dist/ivo-portfolio/browser` to GitHub Pages through GitHub Actions.
 
 ## Content still awaiting approval
 
