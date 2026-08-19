@@ -81,6 +81,7 @@ body { margin: 0; overflow-x: hidden; background: linear-gradient(rgb(116 85 44 
 .contact::after { inset: 1.5rem; border: 1px solid rgb(255 248 232 / 35%); }
 .contact > * { position: relative; z-index: 1; }
 .contact__flourish { width: min(70%, 31rem); fill: none; stroke: var(--color-gold); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3; }
+.contact__flourish circle { fill: var(--color-red-bright); }
 .contact .context-label { color: var(--color-gold); }
 .contact h2 { margin: 0; font-family: var(--font-display); font-size: var(--step-3); line-height: 1; }
 .contact p:not(.context-label) { max-width: 39rem; margin: 1.2rem auto 1.8rem; color: #fff8e9df; }
