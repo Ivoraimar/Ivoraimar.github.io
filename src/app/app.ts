@@ -40,9 +40,11 @@ export class App {
     const reduceMotion =
       browserWindow?.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 
-    target.scrollIntoView({
+    const targetTop = target.getBoundingClientRect().top + (browserWindow?.scrollY ?? 0);
+
+    browserWindow?.scrollTo({
+      top: targetTop,
       behavior: reduceMotion ? 'auto' : 'smooth',
-      block: 'start',
     });
     browserWindow?.history.pushState(null, '', `#${sectionId}`);
   }

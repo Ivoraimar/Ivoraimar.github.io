@@ -20,6 +20,8 @@ describe('App', () => {
     expect(element.querySelector('nav[aria-label="Primary navigation"]')).toBeTruthy();
     expect(element.querySelectorAll('main section').length).toBeGreaterThanOrEqual(5);
     expect(element.querySelector('a[href="#main-content"]')).toBeTruthy();
+    expect(element.querySelector('.thesis-panel__copy')?.textContent).toContain('CRIU');
+    expect(element.querySelector('.thesis-panel__copy')?.textContent).toContain('WebAssembly');
     expect(element.textContent).toContain('React');
     expect(element.textContent).not.toContain('Frontend');
   });
@@ -28,20 +30,15 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const element = fixture.nativeElement as HTMLElement;
-    const workSection = element.querySelector<HTMLElement>('#work');
     const workLink = element.querySelector<HTMLAnchorElement>('nav a[href="#work"]');
-    const scrollIntoView = vi.fn();
-
-    Object.defineProperty(workSection, 'scrollIntoView', {
-      configurable: true,
-      value: scrollIntoView,
-    });
+    const scrollTo = vi.spyOn(window, 'scrollTo').mockImplementation(() => undefined);
 
     workLink?.click();
 
-    expect(scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' });
+    expect(scrollTo).toHaveBeenCalledWith({ behavior: 'smooth', top: 0 });
     expect(window.location.hash).toBe('#work');
 
+    scrollTo.mockRestore();
     window.history.replaceState(null, '', window.location.pathname);
   });
 

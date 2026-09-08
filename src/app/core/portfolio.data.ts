@@ -169,7 +169,7 @@ export const PORTFOLIO_COPY = {
       institution:
         'Completed at the Technical University of Munich in the context of the Chair of Connected Mobility.',
       description:
-        'A practical evaluation of cold, pre-copy, and post-copy migration under constrained and intermittent network conditions—measuring the trade-offs that matter in real edge environments.',
+        'A practical evaluation of CRIU-based cold, pre-copy, and post-copy container migration, alongside WebAssembly workload experiments, under constrained and intermittent network conditions—measuring the trade-offs that matter in real edge environments.',
       metricsLabel: 'Evaluation metrics',
       metrics: [
         { name: 'Downtime', description: 'Service interruption' },
@@ -232,7 +232,7 @@ export const PORTFOLIO_COPY = {
       institution:
         'Hice este TFG durante mi Erasmus en TUM, dentro de la Chair of Connected Mobility.',
       description:
-        'Un estudio experimental de las estrategias cold, pre-copy y post-copy en redes limitadas o intermitentes, centrado en los trade-offs que realmente importan en entornos edge.',
+        'Una evaluación práctica de migraciones de containers con CRIU —cold, pre-copy y post-copy— junto con experimentos con workloads WebAssembly, en redes limitadas o intermitentes y centrada en los trade-offs que realmente importan en entornos edge.',
       metricsLabel: 'Qué medí',
       metrics: [
         { name: 'Downtime', description: 'Interrupción del servicio' },

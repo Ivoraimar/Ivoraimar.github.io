@@ -7,4 +7,4 @@
 .button--quiet { border-color: rgb(243 231 204 / 50%); background: transparent; color: var(--color-paper-light); }
 .tag-list { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0; padding: 0; list-style: none; }
 .tag-list li { border: 1px solid currentColor; border-radius: 99rem; font-size: 0.75rem; font-weight: 750; padding: 0.25rem 0.6rem; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; } }
+@media (prefers-reduced-motion: reduce) { html, body { scroll-behavior: auto; } *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; } }
