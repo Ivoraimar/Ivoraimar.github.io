@@ -8,6 +8,8 @@ export const LINKS = {
   thesisRepository:
     'https://github.com/Ivoraimar/Evaluation-of-Live-Migration-Strategies-at-the-Edge',
   thesisPdf: 'documents/live-migration-thesis.pdf',
+  thesisPresentation:
+    'https://balancer.bbb.rbg.tum.de/playback/video/43029df94cc085c4fbc2063bc08c0549bab493cd-1781698607530/',
 } as const;
 
 export const FEATURED_PROJECT: Project = {
@@ -92,6 +94,10 @@ export const SELECTED_PROJECTS: readonly Project[] = [
         label: localized('Explore the team repositories', 'Ver los repositorios del equipo'),
         url: 'https://github.com/orgs/TUM-Edge-IoT/repositories',
       },
+      {
+        label: localized('Read the Rover final report', 'Leer el informe final del Rover'),
+        url: 'documents/Final%20Report%20Rover%20-%20Group%20BOM.pdf',
+      },
     ],
   },
   {
@@ -158,6 +164,7 @@ export const PORTFOLIO_COPY = {
       ],
       technologiesLabel: 'Technologies',
       pdfAction: 'Read the thesis PDF',
+      presentationAction: 'Watch the thesis presentation',
       repositoryAction: 'Explore the thesis repository',
       coverAlt: 'Cover of Evaluation of Live Migration Strategies at the Edge by Ivo Raimondi',
     },
@@ -220,6 +227,7 @@ export const PORTFOLIO_COPY = {
       ],
       technologiesLabel: 'Tecnologías',
       pdfAction: 'Leer el TFG en PDF',
+      presentationAction: 'Ver la presentación del TFG',
       repositoryAction: 'Ver el repositorio del TFG',
       coverAlt: 'Portada del TFG Evaluation of Live Migration Strategies at the Edge, de Ivo Raimondi',
     },

@@ -29,6 +29,10 @@ describe('App', () => {
     const links = Array.from((fixture.nativeElement as HTMLElement).querySelectorAll('a'));
     const hrefs = links.map((link) => link.getAttribute('href'));
     expect(hrefs).toContain('documents/live-migration-thesis.pdf');
+    expect(hrefs).toContain('documents/Final%20Report%20Rover%20-%20Group%20BOM.pdf');
+    expect(hrefs).toContain(
+      'https://balancer.bbb.rbg.tum.de/playback/video/43029df94cc085c4fbc2063bc08c0549bab493cd-1781698607530/',
+    );
     expect(hrefs).toContain('https://github.com/Ivoraimar/Lunar-Lander-DQN');
     expect(hrefs).toContain('https://github.com/orgs/TUM-Edge-IoT/repositories');
     expect(hrefs).toContain('https://www.linkedin.com/in/ivo-raimondi-7a2a5b292/');
