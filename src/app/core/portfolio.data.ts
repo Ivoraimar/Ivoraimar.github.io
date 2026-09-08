@@ -19,22 +19,37 @@ export const FEATURED_PROJECT: Project = {
     'Open source · Software developer y maintainer',
   ),
   description: localized(
-    'An open-source orchestration framework for deploying containerized workloads across the edge–cloud continuum.',
-    'Un framework open source para desplegar y orquestar workloads containerizados a lo largo del continuo edge–cloud.',
+    'An open-source framework for orchestrating containerized workloads across distributed edge environments. As a maintainer, I contribute across its Angular dashboard, Python/Flask APIs, observability stack, and deployment tooling.',
+    'Un framework open source para orquestar workloads containerizados en entornos edge distribuidos. Como maintainer, contribuyo al dashboard en Angular, las APIs en Python/Flask, el stack de observabilidad y las herramientas de deployment.',
   ),
   highlights: [
     localized(
       'Angular dashboard features and focused UX improvements',
-      'Nuevas funcionalidades y mejoras de UX en el dashboard de Angular',
+      'Funcionalidades y mejoras de UX en el dashboard de Angular',
     ),
-    localized('Python backend services and API endpoints', 'Servicios backend y endpoints en Python'),
-    localized('Technical documentation with Hugo', 'Documentación técnica con Hugo'),
     localized(
-      'Deployment and infrastructure contributions',
-      'Trabajo en despliegues e infraestructura',
+      'Service and network-management APIs with Python and Flask',
+      'APIs para gestionar servicios y redes con Python y Flask',
+    ),
+    localized(
+      'Observability stack with Prometheus, Grafana, Loki, and Promtail',
+      'Stack de observabilidad con Prometheus, Grafana, Loki y Promtail',
+    ),
+    localized(
+      'Deployment workflows, cluster bring-up tooling, and technical documentation',
+      'Workflows de deployment, tooling para levantar clusters y documentación técnica',
     ),
   ],
-  technologies: ['Angular', 'Python', 'Hugo', 'Edge'],
+  technologies: [
+    'Angular',
+    'Python/Flask',
+    'Prometheus',
+    'Grafana',
+    'Loki',
+    'Docker Compose',
+    'MQTT',
+    'Hugo',
+  ],
   theme: 'oakestra',
   links: [
     {
@@ -229,7 +244,8 @@ export const PORTFOLIO_COPY = {
       pdfAction: 'Leer el TFG en PDF',
       presentationAction: 'Ver la presentación del TFG',
       repositoryAction: 'Ver el repositorio del TFG',
-      coverAlt: 'Portada del TFG Evaluation of Live Migration Strategies at the Edge, de Ivo Raimondi',
+      coverAlt:
+        'Portada del TFG Evaluation of Live Migration Strategies at the Edge, de Ivo Raimondi',
     },
     projects: { eyebrow: 'Otros proyectos', title: 'Aprender construyendo' },
     projectLabels: {

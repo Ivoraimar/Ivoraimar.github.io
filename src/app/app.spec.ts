@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { vi } from 'vitest';
 import { App } from './app';
 
 describe('App', () => {
@@ -23,6 +24,27 @@ describe('App', () => {
     expect(element.textContent).not.toContain('Frontend');
   });
 
+  it('smoothly scrolls when an internal navigation link is activated', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const element = fixture.nativeElement as HTMLElement;
+    const workSection = element.querySelector<HTMLElement>('#work');
+    const workLink = element.querySelector<HTMLAnchorElement>('nav a[href="#work"]');
+    const scrollIntoView = vi.fn();
+
+    Object.defineProperty(workSection, 'scrollIntoView', {
+      configurable: true,
+      value: scrollIntoView,
+    });
+
+    workLink?.click();
+
+    expect(scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' });
+    expect(window.location.hash).toBe('#work');
+
+    window.history.replaceState(null, '', window.location.pathname);
+  });
+
   it('renders approved project, thesis, and contact links', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
@@ -39,14 +61,19 @@ describe('App', () => {
     expect(hrefs.some((href) => href?.startsWith('mailto:'))).toBe(false);
   });
 
-  it('uses Oakestra-specific positioning without decorative orbit circles', async () => {
+  it('presents Oakestra as cross-stack engineering work without decorative orbit circles', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const element = fixture.nativeElement as HTMLElement;
+    const featuredWork = element.querySelector('.featured-work');
 
     expect(element.querySelector('.featured-work__identity p')?.textContent).toContain(
       'Lightweight orchestration across the edge–cloud continuum',
     );
+    expect(featuredWork?.textContent).toContain('Angular dashboard');
+    expect(featuredWork?.textContent).toContain('Prometheus');
+    expect(featuredWork?.textContent).toContain('Grafana');
+    expect(featuredWork?.textContent).toContain('Docker Compose');
     expect(element.querySelector('.featured-work__orbit')).toBeNull();
   });
 

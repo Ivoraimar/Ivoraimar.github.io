@@ -24,6 +24,29 @@ export class App {
     return value[this.language()];
   }
 
+  protected scrollToSection(event: MouseEvent, sectionId: string): void {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return;
+    }
+
+    const target = this.document.getElementById(sectionId);
+    if (!target) {
+      return;
+    }
+
+    event.preventDefault();
+
+    const browserWindow = this.document.defaultView;
+    const reduceMotion =
+      browserWindow?.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+
+    target.scrollIntoView({
+      behavior: reduceMotion ? 'auto' : 'smooth',
+      block: 'start',
+    });
+    browserWindow?.history.pushState(null, '', `#${sectionId}`);
+  }
+
   protected setLanguage(language: Language): void {
     this.language.set(language);
     this.document.documentElement.lang = language;
