@@ -94,10 +94,6 @@ body { margin: 0; overflow-x: hidden; background: linear-gradient(rgb(116 85 44 
 
 @media (min-width: 56.01rem) {
   :root { --section-space: clamp(2.75rem, 5.5svh, 4rem); }
-  .hero { padding-top: 5rem; padding-bottom: 1.25rem; }
-  .hero__sign { min-height: min(43rem, calc(100svh - 8.5rem)); }
-  .hero__inner { padding-top: clamp(5.5rem, 12svh, 7.5rem); padding-bottom: clamp(5rem, 11svh, 7rem); }
-  .hero__scroll { margin-top: 0.75rem; }
   .section--work, .section--thesis, .section--projects { display: flex; min-height: 100svh; flex-direction: column; justify-content: center; }
   .section app-ornamental-title { margin-bottom: clamp(1.5rem, 3svh, 2.5rem); }
   .featured-work__copy { padding: clamp(2rem, 3.5vw, 3rem); }
