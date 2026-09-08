@@ -5,7 +5,6 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html { min-width: 20rem; scroll-padding-top: 5.5rem; }
-html, body { scroll-behavior: smooth; }
 body { margin: 0; overflow-x: hidden; background: linear-gradient(rgb(116 85 44 / 5%) 1px, transparent 1px), var(--color-paper); background-size: 100% 0.32rem; }
 ::selection { background: var(--color-gold); color: var(--color-navy-deep); }
 :focus-visible { outline: 0.2rem solid #4fa3bd; outline-offset: 0.22rem; }
@@ -81,7 +80,7 @@ body { margin: 0; overflow-x: hidden; background: linear-gradient(rgb(116 85 44 
 .contact::before, .contact::after { position: absolute; inset: 1rem; border: 0.2rem double var(--color-gold); content: ''; pointer-events: none; }
 .contact::after { inset: 1.5rem; border: 1px solid rgb(255 248 232 / 35%); }
 .contact > * { position: relative; z-index: 1; }
-.contact__flourish { display: block; width: min(70%, 31rem); margin: 0 auto 1.7rem; fill: none; stroke: var(--color-gold); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3; }
+.contact__flourish { display: block; width: min(70%, 31rem); margin: 1.7rem auto 0; fill: none; stroke: var(--color-gold); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3; }
 .contact__flourish circle { fill: var(--color-red-bright); }
 .contact .context-label { color: var(--color-gold); }
 .contact h2 { margin: 0; font-family: var(--font-display); font-size: var(--step-3); line-height: 1; }
@@ -92,6 +91,26 @@ body { margin: 0; overflow-x: hidden; background: linear-gradient(rgb(116 85 44 
 
 .site-footer { display: flex; justify-content: space-between; gap: 1rem; padding: 1.35rem var(--gutter); background: var(--color-navy-deep); color: #e9dfca; font-size: var(--step--1); }
 .site-footer p { margin: 0; }
+
+@media (min-width: 56.01rem) {
+  :root { --section-space: clamp(2.75rem, 5.5svh, 4rem); }
+  .hero { padding-top: 5rem; padding-bottom: 1.25rem; }
+  .hero__sign { min-height: min(43rem, calc(100svh - 8.5rem)); }
+  .hero__inner { padding-top: clamp(5.5rem, 12svh, 7.5rem); padding-bottom: clamp(5rem, 11svh, 7rem); }
+  .hero__scroll { margin-top: 0.75rem; }
+  .section--work, .section--thesis, .section--projects { display: flex; min-height: 100svh; flex-direction: column; justify-content: center; }
+  .section app-ornamental-title { margin-bottom: clamp(1.5rem, 3svh, 2.5rem); }
+  .featured-work__copy { padding: clamp(2rem, 3.5vw, 3rem); }
+  .featured-work__identity { min-height: min(26rem, 55svh); }
+  .thesis-panel { gap: clamp(2.5rem, 5vw, 4.5rem); }
+}
+
+@media (min-width: 56.01rem) and (max-height: 50rem) {
+  :root { --section-space: 2.25rem; }
+  .thesis-metrics { margin-block: 1.25rem; }
+  .thesis-actions { margin-top: 1.1rem; }
+  .thesis-cover { width: min(100%, 16rem); }
+}
 
 @media (max-width: 56rem) {
   .featured-work, .thesis-panel { grid-template-columns: 1fr; }

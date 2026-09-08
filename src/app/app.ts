@@ -13,6 +13,7 @@ import { ProjectPanel } from './shared/project-panel/project-panel';
 })
 export class App {
   private readonly document = inject(DOCUMENT);
+  private activeScrollFrame: number | undefined;
 
   protected readonly featuredProject = FEATURED_PROJECT;
   protected readonly projects = SELECTED_PROJECTS;
@@ -37,16 +38,47 @@ export class App {
     event.preventDefault();
 
     const browserWindow = this.document.defaultView;
+    if (!browserWindow) {
+      return;
+    }
+
     const reduceMotion =
-      browserWindow?.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+      browserWindow.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    const startTop = browserWindow.scrollY;
+    const targetTop = target.getBoundingClientRect().top + startTop;
+    const distance = targetTop - startTop;
 
-    const targetTop = target.getBoundingClientRect().top + (browserWindow?.scrollY ?? 0);
+    if (this.activeScrollFrame !== undefined) {
+      browserWindow.cancelAnimationFrame(this.activeScrollFrame);
+      this.activeScrollFrame = undefined;
+    }
 
-    browserWindow?.scrollTo({
-      top: targetTop,
-      behavior: reduceMotion ? 'auto' : 'smooth',
-    });
-    browserWindow?.history.pushState(null, '', `#${sectionId}`);
+    if (reduceMotion || Math.abs(distance) < 1) {
+      browserWindow.scrollTo(0, targetTop);
+    } else {
+      const duration = Math.min(900, Math.max(450, Math.abs(distance) * 0.25));
+      const startTime = browserWindow.performance.now();
+
+      const animateScroll = (currentTime: number): void => {
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        const easedProgress =
+          progress < 0.5
+            ? 4 * progress * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+        browserWindow.scrollTo(0, startTop + distance * easedProgress);
+
+        if (progress < 1) {
+          this.activeScrollFrame = browserWindow.requestAnimationFrame(animateScroll);
+        } else {
+          this.activeScrollFrame = undefined;
+        }
+      };
+
+      this.activeScrollFrame = browserWindow.requestAnimationFrame(animateScroll);
+    }
+
+    browserWindow.history.pushState(null, '', `#${sectionId}`);
   }
 
   protected setLanguage(language: Language): void {

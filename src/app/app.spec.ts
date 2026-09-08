@@ -26,18 +26,31 @@ describe('App', () => {
     expect(element.textContent).not.toContain('Frontend');
   });
 
-  it('smoothly scrolls when an internal navigation link is activated', async () => {
+  it('animates the page position when an internal navigation link is activated', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const element = fixture.nativeElement as HTMLElement;
+    const workSection = element.querySelector<HTMLElement>('#work');
     const workLink = element.querySelector<HTMLAnchorElement>('nav a[href="#work"]');
     const scrollTo = vi.spyOn(window, 'scrollTo').mockImplementation(() => undefined);
+    const getBoundingClientRect = vi
+      .spyOn(workSection!, 'getBoundingClientRect')
+      .mockReturnValue(new DOMRect(0, 900));
+    const requestAnimationFrame = vi
+      .spyOn(window, 'requestAnimationFrame')
+      .mockImplementation((callback) => {
+        callback(window.performance.now() + 1_000);
+        return 1;
+      });
 
     workLink?.click();
 
-    expect(scrollTo).toHaveBeenCalledWith({ behavior: 'smooth', top: 0 });
+    expect(requestAnimationFrame).toHaveBeenCalled();
+    expect(scrollTo).toHaveBeenLastCalledWith(0, 900);
     expect(window.location.hash).toBe('#work');
 
+    requestAnimationFrame.mockRestore();
+    getBoundingClientRect.mockRestore();
     scrollTo.mockRestore();
     window.history.replaceState(null, '', window.location.pathname);
   });
