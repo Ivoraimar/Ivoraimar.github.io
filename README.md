@@ -28,10 +28,10 @@ English and Spanish copy and project links live in `src/app/core/portfolio.data.
 
 Contact options are configured in `src/app/core/contact.config.ts`:
 
-- `email` stays `null` until an address is explicitly approved for publication.
-- `cvUrl` stays `null` until the final CV is ready. To activate the download, add the approved PDF at `public/documents/ivo-raimondi-cv.pdf` and set `cvUrl` to `documents/ivo-raimondi-cv.pdf`. The bilingual download button then appears automatically. Do not commit an outdated CV.
+- `email` contains the address approved for publication. Its button copies the address to the clipboard and announces success in the selected language. If clipboard access is unavailable or denied, the address is shown for manual copying.
+- `cvUrl` points to the approved English CV at `public/documents/ivo-raimondi-cv.pdf`. Replace this file with the next approved version to update the download. The Spanish button identifies the PDF as English.
 
-Unset options render no buttons or placeholders. GitHub and LinkedIn remain available.
+Set either option to `null` to hide its button. GitHub and LinkedIn remain available. About me appears immediately after the opening section, before the featured work.
 
 ## Search and social previews
 

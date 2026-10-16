@@ -19,6 +19,7 @@ describe('App', () => {
     expect(element.querySelector('h1')?.textContent).toContain('Ivo');
     expect(element.querySelector('nav[aria-label="Primary navigation"]')).toBeTruthy();
     expect(element.querySelectorAll('main section').length).toBeGreaterThanOrEqual(5);
+    expect(element.querySelector('.hero')?.nextElementSibling?.id).toBe('about');
     expect(element.querySelector('a[href="#main-content"]')).toBeTruthy();
     expect(element.querySelector('.thesis-panel__copy')?.textContent).toContain('CRIU');
     expect(element.querySelector('.thesis-panel__copy')?.textContent).toContain('WebAssembly');
@@ -59,7 +60,8 @@ describe('App', () => {
   it('renders approved project, thesis, and contact links', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
-    const links = Array.from((fixture.nativeElement as HTMLElement).querySelectorAll('a'));
+    const element = fixture.nativeElement as HTMLElement;
+    const links = Array.from(element.querySelectorAll('a'));
     const hrefs = links.map((link) => link.getAttribute('href'));
     expect(hrefs).toContain('documents/live-migration-thesis.pdf');
     expect(hrefs).toContain('documents/Final%20Report%20Rover%20-%20Group%20BOM.pdf');
@@ -69,7 +71,10 @@ describe('App', () => {
     expect(hrefs).toContain('https://github.com/Ivoraimar/Lunar-Lander-DQN');
     expect(hrefs).toContain('https://github.com/orgs/TUM-Edge-IoT/repositories');
     expect(hrefs).toContain('https://www.linkedin.com/in/ivo-raimondi-7a2a5b292/');
-    expect(hrefs.some((href) => href?.startsWith('mailto:'))).toBe(false);
+    expect(element.querySelector('.contact__email')?.getAttribute('aria-label')).toContain(
+      'ivo40527@gmail.com',
+    );
+    expect(hrefs).toContain('documents/ivo-raimondi-cv.pdf');
   });
 
   it('respects reduced motion when navigating and still moves keyboard focus', async () => {

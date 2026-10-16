@@ -1,6 +1,6 @@
-// Leave these null until the address is approved for publication and the final CV is ready.
-// For the CV, add the final PDF under public/documents and use its relative URL here.
+// Approved public contact details. Set either option to null to hide its button.
+// Keep the final CV under public/documents and use its relative URL here.
 export const CONTACT: Readonly<{ email: string | null; cvUrl: string | null }> = {
-  email: null,
-  cvUrl: null,
+  email: 'ivo40527@gmail.com',
+  cvUrl: 'documents/ivo-raimondi-cv.pdf',
 };

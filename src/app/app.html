@@ -91,6 +91,14 @@
     </a>
   </section>
 
+  <section class="section section--context" id="about" aria-labelledby="context-title">
+    <div class="context-block">
+      <p class="context-label">{{ copy().context.eyebrow }}</p>
+      <h2 id="context-title">{{ copy().context.title }}</h2>
+      <p>{{ copy().context.description }}</p>
+    </div>
+  </section>
+
   <section class="section section--work" id="work" aria-labelledby="work-title" tabindex="-1">
     <app-ornamental-title
       [eyebrow]="copy().featured.eyebrow"
@@ -234,14 +242,6 @@
     </div>
   </section>
 
-  <section class="section section--context" aria-labelledby="context-title">
-    <div class="context-block">
-      <p class="context-label">{{ copy().context.eyebrow }}</p>
-      <h2 id="context-title">{{ copy().context.title }}</h2>
-      <p>{{ copy().context.description }}</p>
-    </div>
-  </section>
-
   <section class="contact" id="contact" aria-labelledby="contact-title" tabindex="-1">
     <app-filete-frame />
     <p class="context-label">{{ copy().contact.eyebrow }}</p>
@@ -249,9 +249,15 @@
     <p>{{ copy().contact.description }}</p>
     <div class="contact__actions">
       @if (contact.email; as email) {
-        <a class="button button--light" [href]="'mailto:' + email">
+        <button
+          class="button button--light contact__email"
+          type="button"
+          [attr.aria-label]="copy().contact.emailAction + ': ' + email"
+          [attr.aria-disabled]="emailCopyState() === 'copying'"
+          (click)="copyEmail()"
+        >
           {{ copy().contact.emailAction }}
-        </a>
+        </button>
       }
       @if (contact.cvUrl; as cvUrl) {
         <a
@@ -282,6 +288,11 @@
         ><span class="sr-only"> {{ copy().projectLabels.opensNewTab }}</span>
       </a>
     </div>
+    @if (contact.email) {
+      <p class="contact__copy-status" role="status" aria-live="polite" aria-atomic="true">
+        {{ emailCopyMessage() }}
+      </p>
+    }
   </section>
 </main>
 

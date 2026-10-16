@@ -204,7 +204,9 @@ export const PORTFOLIO_COPY = {
         'I’m always happy to talk about engineering roles, open-source work, or research collaborations.',
       githubAction: 'Find me on GitHub',
       linkedinAction: 'Connect on LinkedIn',
-      emailAction: 'Email me',
+      emailAction: 'Copy email',
+      emailCopied: 'Email copied to clipboard.',
+      emailCopyFailed: 'Couldn’t copy automatically. Copy this address:',
       cvAction: 'Download CV (PDF)',
     },
     footer: {
@@ -275,8 +277,10 @@ export const PORTFOLIO_COPY = {
         'Si querés hablar de oportunidades en ingeniería, proyectos open source o colaboraciones de investigación, escribime.',
       githubAction: 'Ver mi GitHub',
       linkedinAction: 'Hablemos en LinkedIn',
-      emailAction: 'Escribime por email',
-      cvAction: 'Descargar CV (PDF)',
+      emailAction: 'Copiar email',
+      emailCopied: 'Email copiado al portapapeles.',
+      emailCopyFailed: 'No se pudo copiar automáticamente. Copiá esta dirección:',
+      cvAction: 'Descargar CV (PDF en inglés)',
     },
     footer: {
       credit: 'Diseñado y desarrollado por Ivo Raimondi.',

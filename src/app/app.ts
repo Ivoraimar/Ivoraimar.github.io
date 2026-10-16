@@ -23,6 +23,39 @@ export class App {
   protected readonly contact = CONTACT;
   protected readonly language = signal<Language>('en');
   protected readonly copy = computed(() => PORTFOLIO_COPY[this.language()]);
+  protected readonly emailCopyState = signal<'idle' | 'copying' | 'copied' | 'error'>('idle');
+  protected readonly emailCopyMessage = computed(() => {
+    const contactCopy = this.copy().contact;
+    switch (this.emailCopyState()) {
+      case 'copied':
+        return contactCopy.emailCopied;
+      case 'error':
+        return `${contactCopy.emailCopyFailed} ${this.contact.email}`;
+      default:
+        return '';
+    }
+  });
+
+  protected async copyEmail(): Promise<void> {
+    const email = this.contact.email;
+    if (!email || this.emailCopyState() === 'copying') {
+      return;
+    }
+
+    this.emailCopyState.set('copying');
+    try {
+      const clipboard = this.document.defaultView?.navigator.clipboard;
+      if (!clipboard?.writeText) {
+        this.emailCopyState.set('error');
+        return;
+      }
+
+      await clipboard.writeText(email);
+      this.emailCopyState.set('copied');
+    } catch {
+      this.emailCopyState.set('error');
+    }
+  }
 
   protected localize(value: LocalizedText): string {
     return value[this.language()];
