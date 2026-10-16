@@ -48,6 +48,7 @@ describe('App', () => {
     expect(requestAnimationFrame).toHaveBeenCalled();
     expect(scrollTo).toHaveBeenLastCalledWith(0, 900);
     expect(window.location.hash).toBe('#work');
+    expect(document.activeElement).toBe(workSection);
 
     requestAnimationFrame.mockRestore();
     getBoundingClientRect.mockRestore();

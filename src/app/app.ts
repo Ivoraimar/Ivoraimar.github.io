@@ -4,10 +4,11 @@ import { FEATURED_PROJECT, LINKS, PORTFOLIO_COPY, SELECTED_PROJECTS } from './co
 import { Language, LocalizedText } from './core/models/portfolio.models';
 import { OrnamentalTitle } from './shared/ornamental-title/ornamental-title';
 import { ProjectPanel } from './shared/project-panel/project-panel';
+import { FileteFrame } from './shared/filete-frame/filete-frame';
 
 @Component({
   selector: 'app-root',
-  imports: [NgOptimizedImage, OrnamentalTitle, ProjectPanel],
+  imports: [NgOptimizedImage, OrnamentalTitle, ProjectPanel, FileteFrame],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -47,6 +48,8 @@ export class App {
     const startTop = browserWindow.scrollY;
     const targetTop = target.getBoundingClientRect().top + startTop;
     const distance = targetTop - startTop;
+
+    target.focus({ preventScroll: true });
 
     if (this.activeScrollFrame !== undefined) {
       browserWindow.cancelAnimationFrame(this.activeScrollFrame);

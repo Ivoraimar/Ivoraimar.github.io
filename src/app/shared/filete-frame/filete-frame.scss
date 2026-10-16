@@ -1,0 +1,74 @@
+:host {
+  --corner-size: var(--filete-corner-size, clamp(5.5rem, 12vw, 11rem));
+  --frame-inset: clamp(0.75rem, 1.6vw, 1.5rem);
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+}
+.filete-edge {
+  position: absolute;
+  top: var(--frame-inset);
+  right: var(--frame-inset);
+  left: var(--frame-inset);
+  height: calc(var(--corner-size) * 0.8);
+}
+.filete-edge--bottom {
+  top: auto;
+  bottom: var(--frame-inset);
+  transform: rotate(180deg);
+}
+.filete-corner {
+  display: block;
+  width: var(--corner-size);
+  height: 100%;
+  overflow: visible;
+  fill: #bf8d3b;
+}
+.filete-stem {
+  fill: var(--color-gold);
+  stroke: none;
+}
+.filete-rule {
+  position: absolute;
+  // The stem ends at (200, 7) in the corner SVG; the rule shares that exact baseline.
+  top: calc(var(--corner-size) * 0.035);
+  right: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(0.5rem, 1vw, 1rem);
+  transform: translateY(-50%);
+}
+.filete-line {
+  display: block;
+}
+.filete-line--joined {
+  margin-left: calc(var(--corner-size) - 1px);
+  height: calc(var(--corner-size) * 0.02);
+  background: linear-gradient(90deg, var(--color-gold), #aa782d 65%, transparent);
+  clip-path: polygon(0 0, 100% 40%, 100% 60%, 0 100%);
+}
+.filete-line--tail {
+  height: 1px;
+  background: linear-gradient(90deg, #aa782d, transparent);
+}
+.filete-diamonds {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.6rem, 1vw, 0.85rem);
+}
+.filete-diamonds i,
+.filete-diamonds b {
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: var(--color-gold);
+  transform: rotate(45deg);
+}
+.filete-diamonds b {
+  width: 10px;
+  height: 10px;
+  background: #efc674;
+}

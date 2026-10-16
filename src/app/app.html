@@ -4,10 +4,17 @@
   <a
     class="wordmark"
     href="#top"
-    [attr.aria-label]="copy().homeLabel"
+    [attr.title]="copy().homeLabel"
     (click)="scrollToSection($event, 'top')"
   >
-    <span class="wordmark__mark" aria-hidden="true">IR</span>
+    <img
+      class="wordmark__mark"
+      ngSrc="favicon.svg"
+      width="40"
+      height="40"
+      alt=""
+      aria-hidden="true"
+    />
     <span class="wordmark__name">Ivo Raimondi</span>
   </a>
 
@@ -24,7 +31,7 @@
       lang="en"
       [class.is-active]="language() === 'en'"
       [attr.aria-pressed]="language() === 'en'"
-      [attr.aria-label]="copy().languageNames.en"
+      [attr.aria-label]="'EN — ' + copy().languageNames.en"
       (click)="setLanguage('en')"
     >
       EN
@@ -35,7 +42,7 @@
       lang="es"
       [class.is-active]="language() === 'es'"
       [attr.aria-pressed]="language() === 'es'"
-      [attr.aria-label]="copy().languageNames.es"
+      [attr.aria-label]="'ES — ' + copy().languageNames.es"
       (click)="setLanguage('es')"
     >
       ES
@@ -43,76 +50,53 @@
   </div>
 </header>
 
-<main id="main-content">
-  <section class="hero" id="top" aria-labelledby="hero-title">
-    <div class="hero__sign">
-      <svg class="hero__ornament hero__ornament--top" viewBox="0 0 900 150" aria-hidden="true">
-        <path
-          class="ornament-shadow"
-          d="M450 88C386 34 319 27 259 59 220 80 188 66 192 42 196 18 234 10 250 33M450 88C514 34 581 27 641 59 680 80 712 66 708 42 704 18 666 10 650 33"
-        />
-        <path
-          class="ornament-gold"
-          d="M450 88C386 34 319 27 259 59 220 80 188 66 192 42 196 18 234 10 250 33M450 88C514 34 581 27 641 59 680 80 712 66 708 42 704 18 666 10 650 33"
-        />
-        <path
-          class="ornament-leaf"
-          d="M367 55C342 17 302 14 281 21 302 54 331 67 367 55ZM533 55C558 17 598 14 619 21 598 54 569 67 533 55Z"
-        />
-        <circle class="ornament-flower" cx="187" cy="45" r="8" />
-        <circle class="ornament-flower" cx="713" cy="45" r="8" />
-      </svg>
-
-      <div class="hero__inner">
-        <p class="hero__kicker">
-          <span>{{ copy().hero.role }}</span>
-        </p>
-        <h1 id="hero-title"><span>Ivo</span> Raimondi</h1>
-        <div class="hero__separator" aria-hidden="true"><span></span><b>◆</b><span></span></div>
-        <p class="hero__positioning">{{ copy().hero.positioning }}</p>
-        <div class="hero__actions">
-          <a class="button button--primary" href="#work" (click)="scrollToSection($event, 'work')">
-            {{ copy().hero.workAction }}
-          </a>
-          <a
-            class="button button--quiet"
-            [href]="links.github"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub <span aria-hidden="true">↗</span
-            ><span class="sr-only"> {{ copy().projectLabels.opensNewTab }}</span>
-          </a>
-        </div>
+<main id="main-content" tabindex="-1">
+  <section class="hero" id="top" aria-labelledby="hero-title" tabindex="-1">
+    <img
+      class="hero__landscape"
+      ngSrc="images/andes-engraving.svg"
+      width="960"
+      height="650"
+      alt=""
+      aria-hidden="true"
+      priority
+    />
+    <app-filete-frame />
+    <div class="hero__inner">
+      <h1 id="hero-title">Ivo Raimondi</h1>
+      <p class="hero__kicker">{{ copy().hero.role }}</p>
+      <ul class="hero__disciplines" [attr.aria-label]="copy().hero.focusLabel">
+        @for (discipline of copy().hero.disciplines; track discipline) {
+          <li>{{ discipline }}</li>
+        }
+      </ul>
+      <p class="hero__positioning">{{ copy().hero.positioning }}</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="#work" (click)="scrollToSection($event, 'work')">
+          {{ copy().hero.workAction }} <span aria-hidden="true">↓</span>
+        </a>
+        <a
+          class="button button--quiet"
+          [href]="links.github"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub <span aria-hidden="true">↗</span
+          ><span class="sr-only"> {{ copy().projectLabels.opensNewTab }}</span>
+        </a>
       </div>
-
-      <svg class="hero__ornament hero__ornament--bottom" viewBox="0 0 900 115" aria-hidden="true">
-        <path
-          class="ornament-shadow"
-          d="M450 17C386 71 319 78 259 46 220 25 188 39 192 63 196 87 234 95 250 72M450 17C514 71 581 78 641 46 680 25 712 39 708 63 704 87 666 95 650 72"
-        />
-        <path
-          class="ornament-gold"
-          d="M450 17C386 71 319 78 259 46 220 25 188 39 192 63 196 87 234 95 250 72M450 17C514 71 581 78 641 46 680 25 712 39 708 63 704 87 666 95 650 72"
-        />
-        <path
-          class="ornament-leaf"
-          d="M339 61C317 95 282 104 261 98 277 69 304 54 339 61ZM561 61C583 95 618 104 639 98 623 69 596 54 561 61Z"
-        />
-        <circle class="ornament-flower" cx="187" cy="60" r="8" />
-        <circle class="ornament-flower" cx="713" cy="60" r="8" />
-        <path class="ribbon-blue" d="M384 46c24 9 108 9 132 0l-8 22c-36 10-80 10-116 0z" />
-        <path class="ribbon-white" d="M392 52c34 8 82 8 116 0l-3 9c-34 8-76 8-110 0z" />
-      </svg>
     </div>
-    <p class="hero__scroll" aria-hidden="true">{{ copy().hero.scroll }} <span>↓</span></p>
+    <a class="hero__scroll" href="#work" (click)="scrollToSection($event, 'work')">
+      {{ copy().hero.scroll }} <span aria-hidden="true">↓</span>
+    </a>
   </section>
 
-  <section class="section section--work" id="work" aria-labelledby="work-title">
+  <section class="section section--work" id="work" aria-labelledby="work-title" tabindex="-1">
     <app-ornamental-title
       [eyebrow]="copy().featured.eyebrow"
       [title]="copy().featured.title"
       headingId="work-title"
+      number="01"
     />
 
     <article class="featured-work">
@@ -154,11 +138,12 @@
     </article>
   </section>
 
-  <section class="section section--thesis" id="thesis" aria-labelledby="thesis-title">
+  <section class="section section--thesis" id="thesis" aria-labelledby="thesis-title" tabindex="-1">
     <app-ornamental-title
       [eyebrow]="copy().thesis.eyebrow"
       [title]="copy().thesis.sectionTitle"
       headingId="thesis-title"
+      number="02"
     />
 
     <div class="thesis-panel">
@@ -183,7 +168,12 @@
           <li>WebAssembly</li>
         </ul>
         <div class="thesis-actions">
-          <a class="button button--thesis" [href]="links.thesisPdf" target="_blank">
+          <a
+            class="button button--thesis"
+            [href]="links.thesisPdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {{ copy().thesis.pdfAction }} <span aria-hidden="true">↗</span
             ><span class="sr-only"> {{ copy().projectLabels.opensNewTab }}</span>
           </a>
@@ -220,11 +210,17 @@
     </div>
   </section>
 
-  <section class="section section--projects" id="projects" aria-labelledby="projects-title">
+  <section
+    class="section section--projects"
+    id="projects"
+    aria-labelledby="projects-title"
+    tabindex="-1"
+  >
     <app-ornamental-title
       [eyebrow]="copy().projects.eyebrow"
       [title]="copy().projects.title"
       headingId="projects-title"
+      number="03"
     />
     <div class="project-grid">
       @for (project of projects; track project.title; let index = $index) {
@@ -246,7 +242,8 @@
     </div>
   </section>
 
-  <section class="contact" id="contact" aria-labelledby="contact-title">
+  <section class="contact" id="contact" aria-labelledby="contact-title" tabindex="-1">
+    <app-filete-frame />
     <p class="context-label">{{ copy().contact.eyebrow }}</p>
     <h2 id="contact-title">{{ copy().contact.title }}</h2>
     <p>{{ copy().contact.description }}</p>

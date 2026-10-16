@@ -155,6 +155,8 @@ export const PORTFOLIO_COPY = {
         'I build useful, dependable software—from user-facing products to distributed systems at the edge.',
       workAction: 'View selected work',
       scroll: 'Scroll to the work',
+      focusLabel: 'Engineering focus',
+      disciplines: ['Cloud', 'Distributed Systems', 'Edge Computing'],
     },
     featured: {
       eyebrow: 'Featured work',
@@ -203,7 +205,10 @@ export const PORTFOLIO_COPY = {
       githubAction: 'Find me on GitHub',
       linkedinAction: 'Connect on LinkedIn',
     },
-    footer: { credit: 'Designed and built by Ivo Raimondi.', backToTop: 'Back to top' },
+    footer: {
+      credit: 'Designed and built by Ivo Raimondi.',
+      backToTop: 'Back to top',
+    },
   },
   es: {
     skip: 'Saltar al contenido principal',
@@ -218,6 +223,8 @@ export const PORTFOLIO_COPY = {
         'Desarrollo software útil y fiable, desde interfaces de usuario hasta sistemas distribuidos en el edge.',
       workAction: 'Ver mi trabajo',
       scroll: 'Sigue bajando',
+      focusLabel: 'Áreas de trabajo',
+      disciplines: ['Cloud', 'Sistemas distribuidos', 'Edge computing'],
     },
     featured: {
       eyebrow: 'Proyecto destacado',
@@ -267,6 +274,9 @@ export const PORTFOLIO_COPY = {
       githubAction: 'Ver mi GitHub',
       linkedinAction: 'Hablemos en LinkedIn',
     },
-    footer: { credit: 'Diseñado y desarrollado por Ivo Raimondi.', backToTop: 'Volver arriba' },
+    footer: {
+      credit: 'Diseñado y desarrollado por Ivo Raimondi.',
+      backToTop: 'Volver arriba',
+    },
   },
 } as const satisfies Record<Language, object>;
