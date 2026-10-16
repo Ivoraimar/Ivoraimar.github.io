@@ -15,12 +15,12 @@ export const LINKS = {
 export const FEATURED_PROJECT: Project = {
   title: 'Oakestra',
   eyebrow: localized(
-    'Open-source · Maintainer & software developer',
-    'Open source · Software developer y maintainer',
+    'Student Assistant · TUM · Jan–Oct 2026',
+    'Asistente de software y edge computing · TUM · ene–oct 2026',
   ),
   description: localized(
-    'An open-source framework for orchestrating containerized workloads across distributed edge environments. As a maintainer, I contribute across its Angular dashboard, Python/Flask APIs, observability stack, and deployment tooling.',
-    'Un framework open source para orquestar workloads containerizados en entornos edge distribuidos. Como maintainer, contribuyo al dashboard en Angular, las APIs en Python/Flask, el stack de observabilidad y las herramientas de deployment.',
+    'An open-source framework for orchestrating containerized workloads across distributed edge environments. As a student assistant and maintainer at TUM, I contributed across its Angular dashboard, Python/Flask APIs, observability stack, and deployment tooling.',
+    'Un framework open source para orquestar workloads containerizados en entornos edge distribuidos. Como asistente y maintainer en TUM, contribuí al dashboard en Angular, las APIs en Python/Flask, el stack de observabilidad y las herramientas de deployment.',
   ),
   highlights: [
     localized(
@@ -195,7 +195,7 @@ export const PORTFOLIO_COPY = {
       eyebrow: 'A little context',
       title: 'From foundations to distributed systems.',
       description:
-        'A bachelor’s degree in Software Engineering from the University of Seville, Erasmus studies in Informatics at TUM, and software development and maintainer work with the Chair of Connected Mobility and Oakestra.',
+        'A bachelor’s degree in Software Engineering from the University of Seville (2022–2026), an Erasmus+ exchange in Informatics at TUM (October 2025–August 2026), and work as a Student Assistant in Software & Edge Computing at TUM’s Chair of Connected Mobility (January–October 2026), contributing to Oakestra. In November 2026, I’ll begin a master’s in Intelligent Systems in Energy and Transport at the University of Seville, specialising in Smart Cities (expected completion in 2028).',
     },
     contact: {
       eyebrow: 'Contact',
@@ -204,6 +204,8 @@ export const PORTFOLIO_COPY = {
         'I’m always happy to talk about engineering roles, open-source work, or research collaborations.',
       githubAction: 'Find me on GitHub',
       linkedinAction: 'Connect on LinkedIn',
+      emailAction: 'Email me',
+      cvAction: 'Download CV (PDF)',
     },
     footer: {
       credit: 'Designed and built by Ivo Raimondi.',
@@ -264,7 +266,7 @@ export const PORTFOLIO_COPY = {
       eyebrow: 'Sobre mí',
       title: 'Del desarrollo de software a los sistemas distribuidos.',
       description:
-        'Estudié Ingeniería del Software en la Universidad de Sevilla y cursé mi Erasmus en TUM. Allí hice mi TFG y trabajé como developer y maintainer en la Chair of Connected Mobility, contribuyendo a Oakestra.',
+        'Estudié Ingeniería del Software en la Universidad de Sevilla (2022–2026) y cursé mi Erasmus+ en Informática en TUM (octubre de 2025–agosto de 2026). Allí hice mi TFG y trabajé como asistente de software y edge computing en la Chair of Connected Mobility (enero–octubre de 2026), contribuyendo a Oakestra. En noviembre de 2026 comenzaré el Máster en Sistemas Inteligentes en Energía y Transporte en la Universidad de Sevilla, con la especialidad de Smart Cities (finalización prevista en 2028).',
     },
     contact: {
       eyebrow: 'Contacto',
@@ -273,6 +275,8 @@ export const PORTFOLIO_COPY = {
         'Si querés hablar de oportunidades en ingeniería, proyectos open source o colaboraciones de investigación, escribime.',
       githubAction: 'Ver mi GitHub',
       linkedinAction: 'Hablemos en LinkedIn',
+      emailAction: 'Escribime por email',
+      cvAction: 'Descargar CV (PDF)',
     },
     footer: {
       credit: 'Diseñado y desarrollado por Ivo Raimondi.',

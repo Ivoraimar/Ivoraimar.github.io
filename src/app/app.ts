@@ -2,6 +2,7 @@ import { DOCUMENT, NgOptimizedImage } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { FEATURED_PROJECT, LINKS, PORTFOLIO_COPY, SELECTED_PROJECTS } from './core/portfolio.data';
 import { Language, LocalizedText } from './core/models/portfolio.models';
+import { CONTACT } from './core/contact.config';
 import { OrnamentalTitle } from './shared/ornamental-title/ornamental-title';
 import { ProjectPanel } from './shared/project-panel/project-panel';
 import { FileteFrame } from './shared/filete-frame/filete-frame';
@@ -19,6 +20,7 @@ export class App {
   protected readonly featuredProject = FEATURED_PROJECT;
   protected readonly projects = SELECTED_PROJECTS;
   protected readonly links = LINKS;
+  protected readonly contact = CONTACT;
   protected readonly language = signal<Language>('en');
   protected readonly copy = computed(() => PORTFOLIO_COPY[this.language()]);
 

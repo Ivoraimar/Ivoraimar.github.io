@@ -109,7 +109,8 @@ body {
   margin: 0 auto;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 70% 40%, #062b33, transparent 68%), var(--color-background);
+    radial-gradient(ellipse 30% 40% at 70% 40%, #062b33, transparent 100%),
+    var(--color-background);
 }
 .hero__inner {
   position: relative;

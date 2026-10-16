@@ -101,7 +101,7 @@
 
     <article class="featured-work">
       <div class="featured-work__identity">
-        <img ngSrc="images/oakestra-logo.png" width="3243" height="3335" alt="Oakestra" />
+        <img ngSrc="images/oakestra-logo.png" width="400" height="411" alt="Oakestra" />
         <p>{{ copy().featured.identityCaption }}</p>
       </div>
       <div class="featured-work__copy">
@@ -248,6 +248,21 @@
     <h2 id="contact-title">{{ copy().contact.title }}</h2>
     <p>{{ copy().contact.description }}</p>
     <div class="contact__actions">
+      @if (contact.email; as email) {
+        <a class="button button--light" [href]="'mailto:' + email">
+          {{ copy().contact.emailAction }}
+        </a>
+      }
+      @if (contact.cvUrl; as cvUrl) {
+        <a
+          class="button button--contact-secondary"
+          [href]="cvUrl"
+          download="Ivo-Raimondi-CV.pdf"
+          type="application/pdf"
+        >
+          {{ copy().contact.cvAction }}
+        </a>
+      }
       <a
         class="button button--light"
         [href]="links.github"

@@ -72,6 +72,36 @@ describe('App', () => {
     expect(hrefs.some((href) => href?.startsWith('mailto:'))).toBe(false);
   });
 
+  it('respects reduced motion when navigating and still moves keyboard focus', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const element = fixture.nativeElement as HTMLElement;
+    const target = element.querySelector<HTMLElement>('#projects')!;
+    const scrollTo = vi.spyOn(window, 'scrollTo').mockImplementation(() => undefined);
+    const bounds = vi.spyOn(target, 'getBoundingClientRect').mockReturnValue(new DOMRect(0, 1200));
+    const originalMatchMedia = Object.getOwnPropertyDescriptor(window, 'matchMedia');
+    const matchMedia = vi.fn().mockReturnValue({ matches: true });
+    Object.defineProperty(window, 'matchMedia', { configurable: true, value: matchMedia });
+
+    try {
+      element.querySelector<HTMLAnchorElement>('nav a[href="#projects"]')?.click();
+
+      expect(matchMedia).toHaveBeenCalledWith('(prefers-reduced-motion: reduce)');
+      expect(scrollTo).toHaveBeenLastCalledWith(0, 1200);
+      expect(document.activeElement).toBe(target);
+      expect(window.location.hash).toBe('#projects');
+    } finally {
+      scrollTo.mockRestore();
+      bounds.mockRestore();
+      if (originalMatchMedia) {
+        Object.defineProperty(window, 'matchMedia', originalMatchMedia);
+      } else {
+        Reflect.deleteProperty(window, 'matchMedia');
+      }
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+  });
+
   it('presents Oakestra as cross-stack engineering work without decorative orbit circles', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
