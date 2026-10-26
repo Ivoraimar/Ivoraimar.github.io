@@ -1,4 +1,4 @@
-import { Language, LocalizedText, Project } from './models/portfolio.models';
+import { Language, LocalizedText, Project, Publication } from './models/portfolio.models';
 
 const localized = (en: string, es: string): LocalizedText => ({ en, es });
 
@@ -15,8 +15,8 @@ export const LINKS = {
 export const FEATURED_PROJECT: Project = {
   title: 'Oakestra',
   eyebrow: localized(
-    'Student Assistant · TUM · Jan–Oct 2026',
-    'Asistente de software y edge computing · TUM · ene–oct 2026',
+    'Student Assistant · TUM · Jan–Sep 2026',
+    'Asistente de software y edge computing · TUM · ene–sep 2026',
   ),
   description: localized(
     'An open-source framework for orchestrating containerized workloads across distributed edge environments. As a student assistant and maintainer at TUM, I contributed across its Angular dashboard, Python/Flask APIs, observability stack, and deployment tooling.',
@@ -57,6 +57,44 @@ export const FEATURED_PROJECT: Project = {
       url: 'https://www.oakestra.io/',
     },
   ],
+};
+
+export const RESEARCH_PUBLICATION: Publication = {
+  id: 'milcom-2026',
+  label: localized('Research publication', 'Publicación científica'),
+  title: 'An Analysis of Stateful Service Migration for Tactical Edge Environments',
+  conference: 'IEEE MILCOM 2026',
+  workshop:
+    'Workshop on Disruptive and Enabling Technologies for NATO and other Coalition Operations',
+  status: localized('Accepted for publication · 2026', 'Aceptado para publicación · 2026'),
+  authors: [
+    'Alessandro Amato',
+    'Giovanni Bartolomeo',
+    'Harrie Bastiaansen',
+    'Willem Datema',
+    'Mattia Fogli',
+    'Thomas Kudla',
+    'Ivo Raimondi',
+    'Pablo Sanchez',
+    'Niranjan Suri',
+  ],
+  highlightedAuthor: 'Ivo Raimondi',
+  description: localized(
+    'Co-authored research examining checkpoint/restore-based approaches to stateful service migration in tactical edge environments, evaluating their performance under constrained networking and computing conditions.',
+    'Investigación en coautoría sobre estrategias de migración de servicios con estado mediante checkpoint/restore en entornos edge tácticos, evaluando su rendimiento bajo condiciones de red e infraestructura limitadas.',
+  ),
+  manuscriptNote: localized(
+    'Accepted manuscript · © 2026 IEEE',
+    'Manuscrito aceptado · © 2026 IEEE',
+  ),
+  manuscript: {
+    label: localized('Read Paper (PDF)', 'Leer artículo (PDF)'),
+    url: 'documents/milcom-2026-stateful-migration.pdf',
+  },
+  announcement: {
+    label: localized('TUM Announcement', 'Comunicado de TUM'),
+    url: 'https://www.ce.cit.tum.de/cm/news-single-view/article/paper-on-analysis-of-stateful-service-migration-for-tactical-edge-environments-accepted-at-milcom-2026-workshop-on-disruptive-and-enabling-technologies-for-nato-and-other-coalition-operations/',
+  },
 };
 
 export const SELECTED_PROJECTS: readonly Project[] = [
@@ -195,7 +233,7 @@ export const PORTFOLIO_COPY = {
       eyebrow: 'A little context',
       title: 'From foundations to distributed systems.',
       description:
-        'A bachelor’s degree in Software Engineering from the University of Seville (2022–2026), an Erasmus+ exchange in Informatics at TUM (October 2025–August 2026), and work as a Student Assistant in Software & Edge Computing at TUM’s Chair of Connected Mobility (January–October 2026), contributing to Oakestra. In November 2026, I’ll begin a master’s in Intelligent Systems in Energy and Transport at the University of Seville, specialising in Smart Cities (expected completion in 2028).',
+        'A bachelor’s degree in Software Engineering from the University of Seville (2022–2026), an Erasmus+ exchange in Informatics at TUM (October 2025–August 2026), and work as a Student Assistant in Software & Edge Computing at TUM’s Chair of Connected Mobility (January–September 2026), contributing to Oakestra. In November 2026, I’ll begin a master’s in Intelligent Systems in Energy and Transport at the University of Seville, specialising in Smart Cities (expected completion in 2028).',
     },
     contact: {
       eyebrow: 'Contact',
@@ -268,7 +306,7 @@ export const PORTFOLIO_COPY = {
       eyebrow: 'Sobre mí',
       title: 'Del desarrollo de software a los sistemas distribuidos.',
       description:
-        'Estudié Ingeniería del Software en la Universidad de Sevilla (2022–2026) y cursé mi Erasmus+ en Informática en TUM (octubre de 2025–agosto de 2026). Allí hice mi TFG y trabajé como asistente de software y edge computing en la Chair of Connected Mobility (enero–octubre de 2026), contribuyendo a Oakestra. En noviembre de 2026 comenzaré el Máster en Sistemas Inteligentes en Energía y Transporte en la Universidad de Sevilla, con la especialidad de Smart Cities (finalización prevista en 2028).',
+        'Estudié Ingeniería del Software en la Universidad de Sevilla (2022–2026) y cursé mi Erasmus+ en Informática en TUM (octubre de 2025–agosto de 2026). Allí hice mi TFG y trabajé como asistente de software y edge computing en la Chair of Connected Mobility (enero–septiembre de 2026), contribuyendo a Oakestra. En noviembre de 2026 comenzaré el Máster en Sistemas Inteligentes en Energía y Transporte en la Universidad de Sevilla, con la especialidad de Smart Cities (finalización prevista en 2028).',
     },
     contact: {
       eyebrow: 'Contacto',

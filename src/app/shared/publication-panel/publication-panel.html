@@ -1,0 +1,47 @@
+<article class="publication" [attr.aria-labelledby]="publication().id + '-title'">
+  <div class="publication__meta">
+    <p class="context-label">{{ localize(publication().label) }}</p>
+    <p class="publication__status">{{ localize(publication().status) }}</p>
+  </div>
+  <h3 [id]="publication().id + '-title'" lang="en">{{ publication().title }}</h3>
+  <p class="publication__venue" lang="en">
+    {{ publication().conference }} · {{ publication().workshop }}
+  </p>
+  <p class="publication__authors">
+    @for (author of publication().authors; track author; let last = $last) {
+      <span class="publication__author">
+        @if (author === publication().highlightedAuthor) {
+          <strong
+            class="publication__author-name"
+            [textContent]="author + (last ? '' : ',')"
+          ></strong>
+        } @else {
+          <span class="publication__author-name" [textContent]="author + (last ? '' : ',')"></span>
+        }</span
+      >{{ last ? '' : ' ' }}
+    }
+  </p>
+  <p class="publication__description">{{ localize(publication().description) }}</p>
+  <div class="publication__actions">
+    <a
+      class="button button--thesis"
+      [href]="publication().manuscript.url"
+      type="application/pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {{ localize(publication().manuscript.label) }} <span aria-hidden="true">↗</span
+      ><span class="sr-only"> {{ opensNewTab() }}</span>
+    </a>
+    <a
+      class="button button--thesis-secondary"
+      [href]="publication().announcement.url"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {{ localize(publication().announcement.label) }} <span aria-hidden="true">↗</span
+      ><span class="sr-only"> {{ opensNewTab() }}</span>
+    </a>
+  </div>
+  <p class="publication__note">{{ localize(publication().manuscriptNote) }}</p>
+</article>

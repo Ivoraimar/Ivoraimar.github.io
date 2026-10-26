@@ -1,15 +1,22 @@
 import { DOCUMENT, NgOptimizedImage } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
-import { FEATURED_PROJECT, LINKS, PORTFOLIO_COPY, SELECTED_PROJECTS } from './core/portfolio.data';
+import {
+  FEATURED_PROJECT,
+  LINKS,
+  PORTFOLIO_COPY,
+  RESEARCH_PUBLICATION,
+  SELECTED_PROJECTS,
+} from './core/portfolio.data';
 import { Language, LocalizedText } from './core/models/portfolio.models';
 import { CONTACT } from './core/contact.config';
 import { OrnamentalTitle } from './shared/ornamental-title/ornamental-title';
 import { ProjectPanel } from './shared/project-panel/project-panel';
 import { FileteFrame } from './shared/filete-frame/filete-frame';
+import { PublicationPanel } from './shared/publication-panel/publication-panel';
 
 @Component({
   selector: 'app-root',
-  imports: [NgOptimizedImage, OrnamentalTitle, ProjectPanel, FileteFrame],
+  imports: [NgOptimizedImage, OrnamentalTitle, ProjectPanel, FileteFrame, PublicationPanel],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -19,6 +26,7 @@ export class App {
 
   protected readonly featuredProject = FEATURED_PROJECT;
   protected readonly projects = SELECTED_PROJECTS;
+  protected readonly publication = RESEARCH_PUBLICATION;
   protected readonly links = LINKS;
   protected readonly contact = CONTACT;
   protected readonly language = signal<Language>('en');

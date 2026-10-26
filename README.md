@@ -33,6 +33,14 @@ Contact options are configured in `src/app/core/contact.config.ts`:
 
 Set either option to `null` to hide its button. GitHub and LinkedIn remain available. About me appears immediately after the opening section, before the featured work.
 
+## Research publication
+
+The compact publication panel follows the bachelor's thesis and precedes selected projects. `RESEARCH_PUBLICATION` in `src/app/core/portfolio.data.ts` owns its metadata, ordered authors, bilingual copy, and links. The paper is identified as accepted for publication at IEEE MILCOM 2026, separately from the individual thesis.
+
+The accepted manuscript is hosted at `documents/milcom-2026-stateful-migration.pdf`, using the exact filename in `public/documents/`. Keep this supplied PDF unchanged: its opening page contains the IEEE copyright and reuse notice. Angular copies it into `dist/ivo-portfolio/browser/documents/` during the production build; the link opens the browser's PDF viewer in a new tab.
+
+When a final publication record becomes available, update the status in both languages and add the verified citation/DOI or IEEE Xplore link to the publication metadata and panel. Do not substitute the publisher's final PDF for the accepted manuscript without checking the applicable posting policy. After deployment, check the manuscript link on GitHub Pages as well as the TUM announcement.
+
 ## Search and social previews
 
 `src/index.html` contains the canonical URL, Open Graph and Twitter metadata, and minimal `ProfilePage`/`Person` structured data. These are included in the prerendered HTML so crawlers do not need to execute JavaScript. English is the default prerendered language; Spanish is available through the existing language switcher at the same URL.
